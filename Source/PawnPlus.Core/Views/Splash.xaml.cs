@@ -31,6 +31,15 @@ namespace PawnPlus.Core.Views
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            if (Properties.Settings.Default.IsUpgradeRequired == true)
+            {
+                this.backgroundWorker.ReportProgress(10, "Obtain settings from the old version...");
+
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.IsUpgradeRequired = false;
+                Properties.Settings.Default.Save();
+            }
+
             this.backgroundWorker.ReportProgress(1, "Starting up..");
             Thread.Sleep(100);
 

@@ -20,7 +20,16 @@ namespace PawnPlus.Core.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            // Save window state, location and state.
+            if (this.WindowState != WindowState.Minimized)
+            {
+               Properties.Settings.Default.WindowState = this.WindowState;
+            }
 
+            Properties.Settings.Default.Location = new Point(this.Left, this.Top);
+            Properties.Settings.Default.Size = new Size(this.Width, this.Height);
+
+            Properties.Settings.Default.Save();
         }
     }
 }

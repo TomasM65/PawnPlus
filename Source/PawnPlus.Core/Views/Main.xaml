@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PawnPlus.Core.Views"
         xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" x:Class="PawnPlus.Core.Views.Main"
+        xmlns:Properties="clr-namespace:PawnPlus.Core.Properties"
         mc:Ignorable="d"
-        Title="PawnPlus" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="/PawnPlus.Core;component/Resources/Icons/Icon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ResizeMode="CanResizeWithGrip">
+        WindowState="{Binding WindowState, Source={x:Static Properties:Settings.Default}, Mode=OneWay}"
+        Height="{Binding Size.Height, Source={x:Static Properties:Settings.Default}, Mode=OneWay}" 
+        Width="{Binding Size.Width, Source={x:Static Properties:Settings.Default}, Mode=OneWay}"
+        Left="{Binding Location.X, Source={x:Static Properties:Settings.Default}, Mode=OneWay}"
+        Top="{Binding Location.Y, Source={x:Static Properties:Settings.Default}, Mode=OneWay}"
+        Title="PawnPlus" Icon="/PawnPlus.Core;component/Resources/Icons/Icon.ico" Loaded="Window_Loaded" Closing="Window_Closing" ResizeMode="CanResizeWithGrip">
     <Grid>
         <DockPanel Margin="0" Background="#FFF0F0F0">
             <StatusBar Margin="0" DockPanel.Dock="Bottom" Background="#FF007ACC" Foreground="White">
